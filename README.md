@@ -11,7 +11,7 @@
 
 **Your AI-powered writing companion for flawless grammar and enhanced communication.**
 
-[Demo](https://grammer-ai.vercel.app) • [Documentation](https://github.com/Anshkaran7/grammer-ai/wiki) • [Report Bug](https://github.com/Anshkaran7/grammer-ai/issues) • [Request Feature](https://github.com/Anshkaran7/grammer-ai/issues)
+[Demo](https://grammerai.vercel.app) • [Documentation](https://github.com/Anshkaran7/grammer-ai/wiki) • [Report Bug](https://github.com/Anshkaran7/grammer-ai/issues) • [Request Feature](https://github.com/Anshkaran7/grammer-ai/issues)
 
 </div>
 

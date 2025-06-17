@@ -167,10 +167,7 @@ export default function GrammarCorrection() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <Textarea
-                  placeholder="Enter your text here... Examples:
-• Main kal office ke liye late ho gaya tha
-• Mujhe movie dekhne ka plan cancel karna pada
-• Kya tum mere saath shopping pe chaloge?"
+                  placeholder="Enter your text here..."
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   className="min-h-[200px] sm:min-h-[240px] resize-none rounded-xl border-gray-200 focus:border-blue-500 focus:ring-blue-500 transition-all"
