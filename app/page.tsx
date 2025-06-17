@@ -22,6 +22,13 @@ import {
 import { Toaster, toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 export default function GrammarCorrection() {
   const [inputText, setInputText] = useState("");
@@ -75,7 +82,14 @@ export default function GrammarCorrection() {
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-        correctGrammar();
+        const signInButton = document.querySelector(
+          '[data-sign-in-button="true"]'
+        ) as HTMLButtonElement;
+        if (signInButton) {
+          signInButton.click();
+        } else {
+          correctGrammar();
+        }
       }
     };
 
@@ -112,9 +126,33 @@ export default function GrammarCorrection() {
           animate={{ y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-            Grammar AI
-          </h1>
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 bg-clip-text  bg-gradient-to-r from-blue-600 to-indigo-600">
+              Grammar AI
+            </h1>
+            <div className="flex items-center gap-4">
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button variant="outline" className="rounded-xl">
+                    Sign In
+                  </Button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <Button className="rounded-xl">Sign Up</Button>
+                </SignUpButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      rootBox: "h-10 w-10",
+                    },
+                  }}
+                />
+              </SignedIn>
+            </div>
+          </div>
           <p className="text-base sm:text-lg font-medium text-gray-600 mb-4">
             Fix your English & Hinglish text instantly
           </p>
@@ -136,6 +174,7 @@ export default function GrammarCorrection() {
           </div>
         </motion.div>
 
+        {/* <SignedIn> */}
         <div className="grid gap-6 md:gap-8 md:grid-cols-2">
           {/* Input Section */}
           <motion.div
@@ -172,41 +211,55 @@ export default function GrammarCorrection() {
                   onChange={(e) => setInputText(e.target.value)}
                   className="min-h-[200px] sm:min-h-[240px] resize-none rounded-xl border-gray-200 focus:border-blue-500 focus:ring-blue-500 transition-all"
                 />
-                <div className="flex gap-2 sm:gap-3">
-                  <Button
-                    onClick={correctGrammar}
-                    disabled={isLoading || !inputText.trim()}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-10 sm:h-11 transition-all"
-                  >
-                    {isLoading ? (
-                      <motion.div
-                        className="flex items-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                <SignedIn>
+                  <div className="flex gap-2 sm:gap-3">
+                    <Button
+                      onClick={correctGrammar}
+                      disabled={isLoading || !inputText.trim()}
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-10 sm:h-11 transition-all"
+                    >
+                      {isLoading ? (
+                        <motion.div
+                          className="flex items-center"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                        >
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Correcting...
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          className="flex items-center"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                        >
+                          <CheckCircle className="w-4 h-4 mr-2" />
+                          Fix Text
+                        </motion.div>
+                      )}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={reset}
+                      disabled={isLoading}
+                      className="rounded-xl h-10 sm:h-11 border-gray-200 hover:bg-gray-50"
+                    >
+                      <RotateCcw className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <div className="flex gap-2 sm:gap-3">
+                      <Button
+                        data-sign-in-button="true"
+                        className="flex-1 bg-black hover:bg-black/80 cursor-pointer text-white rounded-xl h-10 sm:h-11 transition-all"
                       >
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Correcting...
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        className="flex items-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                      >
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        Fix Text
-                      </motion.div>
-                    )}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={reset}
-                    disabled={isLoading}
-                    className="rounded-xl h-10 sm:h-11 border-gray-200 hover:bg-gray-50"
-                  >
-                    <RotateCcw className="w-4 h-4" />
-                  </Button>
-                </div>
+                        Sign In to Fix Text
+                      </Button>
+                    </div>
+                  </SignInButton>
+                </SignedOut>
               </CardContent>
             </Card>
           </motion.div>
@@ -363,6 +416,7 @@ export default function GrammarCorrection() {
             </p>
           </motion.div>
         </motion.div>
+        {/* </SignedIn> */}
       </div>
       {/* Footer */}
       <motion.footer
