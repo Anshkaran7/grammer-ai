@@ -11,7 +11,7 @@
 
 **Your AI-powered writing companion for flawless grammar and enhanced communication.**
 
-[Demo](https://grammarai.com) • [Documentation](https://grammarai.com/docs) • [Report Bug](https://github.com/yourusername/grammer-ai/issues) • [Request Feature](https://github.com/yourusername/grammer-ai/issues)
+[Demo](https://grammer-ai.vercel.app) • [Documentation](https://github.com/Anshkaran7/grammer-ai/wiki) • [Report Bug](https://github.com/Anshkaran7/grammer-ai/issues) • [Request Feature](https://github.com/Anshkaran7/grammer-ai/issues)
 
 </div>
 
@@ -38,7 +38,7 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/grammer-ai.git
+git clone https://github.com/Anshkaran7/grammer-ai.git
 cd grammer-ai
 ```
 
@@ -118,12 +118,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📬 Contact
 
-Project Link: [https://github.com/yourusername/grammer-ai](https://github.com/yourusername/grammer-ai)
+- **Developer**: Karan
+- **Website**: [karandev.in](https://karandev.in)
+- **Twitter**: [@itsmeekaran](https://twitter.com/itsmeekaran)
+- **LinkedIn**: [@itsmeekaran](https://linkedin.com/in/itsmeekaran)
+- **Project Link**: [https://github.com/Anshkaran7/grammer-ai](https://github.com/Anshkaran7/grammer-ai)
 
 ---
 
 <div align="center">
 
-Made with ❤️ by the Grammar AI Team
+Made with ❤️ by [Karan](https://karandev.in)
 
 </div>

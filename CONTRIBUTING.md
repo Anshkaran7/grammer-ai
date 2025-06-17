@@ -62,7 +62,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 ### Documentation Styleguide
 
 - Use [Markdown](https://guides.github.com/features/mastering-markdown/)
-- Reference functions and classes in backticks: \`functionName()\`
+- Reference functions and classes in backticks: `functionName()`
 - Use code blocks for examples
 - Keep line length to a maximum of 80 characters
 - Use descriptive link texts: ✅ [Contributing Guide](/CONTRIBUTING.md) ❌ [click here](/CONTRIBUTING.md)
@@ -89,4 +89,15 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ## Questions?
 
-Feel free to open an issue or reach out to the maintainers if you have any questions!
+Feel free to reach out to the maintainer:
+
+- **Developer**: Karan
+- **Website**: [karandev.in](https://karandev.in)
+- **Twitter**: [@itsmeekaran](https://twitter.com/itsmeekaran)
+- **LinkedIn**: [@itsmeekaran](https://linkedin.com/in/itsmeekaran)
+
+You can also:
+
+- Open an issue
+- Start a [Discussion](https://github.com/Anshkaran7/grammer-ai/discussions)
+- Send a Pull Request
