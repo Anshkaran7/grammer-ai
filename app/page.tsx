@@ -61,7 +61,12 @@ export default function GrammarCorrection() {
 
       toast.success("Text corrected successfully!");
     } catch (error) {
-      toast.error("Something went wrong. Please try again.");
+      console.error("Grammar correction error:", error);
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -83,7 +88,8 @@ export default function GrammarCorrection() {
       await navigator.clipboard.writeText(text);
       toast.success("Text copied!");
     } catch (error) {
-      toast.error("Couldn't copy text");
+      console.error("Clipboard error:", error);
+      toast.error("Failed to copy text to clipboard");
     }
   };
 

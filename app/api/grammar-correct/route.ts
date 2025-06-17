@@ -70,31 +70,34 @@ Provide ONLY the converted English text without any explanations or additional t
     return Response.json({
       correctedText,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Text correction error:", error);
 
     // More specific error messages based on the error type
     let errorMessage = "Something went wrong. Please try again.";
     let statusCode = 500;
 
-    if (error.message?.includes("API_KEY")) {
-      errorMessage =
-        "API key configuration error. Please check server configuration.";
-    } else if (error.message?.includes("timeout")) {
-      errorMessage =
-        "Request took too long. Please try again with a simpler prompt.";
-      statusCode = 408;
-    } else if (
-      error.message?.includes("429") ||
-      error.message?.includes("quota")
-    ) {
-      errorMessage =
-        "API quota exceeded. Please wait before trying again, or try a shorter prompt.";
-      statusCode = 429;
-    } else if (error.message?.includes("400")) {
-      errorMessage =
-        "The API encountered an error with your request. Try simplifying your prompt.";
-      statusCode = 400;
+    // Type guard for Error objects
+    if (error instanceof Error) {
+      if (error.message?.includes("API_KEY")) {
+        errorMessage =
+          "API key configuration error. Please check server configuration.";
+      } else if (error.message?.includes("timeout")) {
+        errorMessage =
+          "Request took too long. Please try again with a simpler prompt.";
+        statusCode = 408;
+      } else if (
+        error.message?.includes("429") ||
+        error.message?.includes("quota")
+      ) {
+        errorMessage =
+          "API quota exceeded. Please wait before trying again, or try a shorter prompt.";
+        statusCode = 429;
+      } else if (error.message?.includes("400")) {
+        errorMessage =
+          "The API encountered an error with your request. Try simplifying your prompt.";
+        statusCode = 400;
+      }
     }
 
     return Response.json({ error: errorMessage }, { status: statusCode });

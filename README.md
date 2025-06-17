@@ -93,17 +93,15 @@ grammer-ai/
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature`)
+3. Commit your changes (`git commit -m 'Add some Feature'`)
+4. Push to the branch (`git push origin feature`)
 5. Open a Pull Request
 
 ## 📝 Environment Variables
 
 ```env
-NEXT_PUBLIC_API_URL=your_api_url
-NEXT_PUBLIC_APP_URL=your_app_url
-AI_MODEL_KEY=your_ai_model_key
+GOOGLE_API_KEY=your_ai_model_key
 ```
 
 ## 📜 License
