@@ -110,6 +110,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${lato.className} antialiased`}>
           {children}
+
           <Analytics />
         </body>
       </html>
